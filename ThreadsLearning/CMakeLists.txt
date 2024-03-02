@@ -6,7 +6,7 @@ set (PROJECT_NAME ThreadsLearning)
 
 
 # Add source to this project's executable.
-add_executable (ThreadsLearning "ThreadsLearning.cpp" "ThreadsLearning.h")
+add_executable (ThreadsLearning "ThreadsLearning.cpp" "ThreadsLearning.h" "ThreadGuard.h" "ThreadArgumentsPassing.h" "ThreadSharedData.h" "ThreadTests.h" "mutex/ThreadSharedDataWithMutex.h" "Utils.h" "mutex/ThreadDeadLock.h" "mutex/ThreadSharedMutexReadWrite.h" "condition_veriables/ThreadConditionVeriable.h" "condition_veriables/ThreadFutureAsync.h" "condition_veriables/ThreadPackageTask.h" "condition_veriables/ThreadFutureException.h" "condition_veriables/ThreadSharedFuture.h" "condition_veriables/ThreadPromiseThen.h" "condition_veriables/ThreadLatchAndBarrier.h" "condition_veriables/ThreadAtomicTypes.h" "architectura/ThreadStrucutreArchitecture.h")
 
 find_package(Boost 1.36.0)
 target_link_libraries(ThreadsLearning PRIVATE Boost::system)
