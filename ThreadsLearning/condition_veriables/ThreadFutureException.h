@@ -76,7 +76,7 @@ std::experimental::future<FinalResult> process_data(std::vector<MyData>& vec)
 	});
 }
 
-W tym
+Jest tez when_any
 
 
 */
