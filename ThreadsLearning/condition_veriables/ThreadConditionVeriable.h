@@ -110,7 +110,7 @@ public:
 
 			// !WARUNEK JEST SPRAWDZANY OD RAZU, A JEZELI ZWROCI FALSE TO CZEKA
 			std::cout << "before wait for " << std::endl;
-			auto result = m_cond.wait_for(uniqueLock, std::chrono::seconds(3), [valueBefore,this]() {
+			auto result = m_cond.wait_for(uniqueLock, std::chrono::seconds(3), [valueBefore, this]() {
 				std::cout << "wait_for" << std::endl;
 				return valueBefore.compare(m_sharedValue) != 0;
 			});

@@ -23,6 +23,8 @@ std::string simpleTask(std::string val) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	std::cout << "[AFTER] Sleep" << std::endl;
 
+	std::cout << "id in task:" << std::this_thread::get_id() <<  std::endl;
+
 	return val;
 }
 
@@ -37,6 +39,7 @@ public:
 	void mainThread() {
 		while (!isFinished) {
 			auto future = doSomeThings();
+			std::cout << "task sender:" << std::this_thread::get_id() << std::endl;
 			auto fromFuture = future.get();
 			std::cout << "result from future: " << fromFuture << std::endl;
 			
@@ -53,6 +56,7 @@ public:
 			std::scoped_lock sl(m_mainMutex);
 
 			std::cout << "[BEFORE TASK CALLING]" << std::endl;
+			std::cout << "id before task:" << std::this_thread::get_id() << std::endl;
 			auto& task = m_tasks.front();
 			task(utils::getRandomString(5));
 			std::cout << "[AFTER TASK CALLING]" << std::endl;
@@ -81,7 +85,6 @@ public:
 private:
 	std::deque<std::packaged_task<std::string(std::string)>> m_tasks;
 	std::mutex m_mainMutex;
-
 
 	bool isFinished;
 };

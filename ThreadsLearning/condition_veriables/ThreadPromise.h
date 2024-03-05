@@ -27,21 +27,21 @@ namespace threads_learning {
 			for(connection_iterator ❷
 			connection=connections.begin(),end=connections.end();
 			connection!=end;
-			++connection)
-		{
-		if(connection->has_incoming_data()) ❸
-		{
-			data_packet data=connection->incoming();
-			std::promise<payload_type>& p=
-			connection->get_promise(data.id); ❹
-			p.set_value(data.payload);
-
-		if(connection->has_outgoing_data()) ❺
-			{
-			outgoing_packet data=
-			connection->top_of_outgoing_queue();
-			connection->send(data.payload);
-			data.promise.set_value(true); ❻
+			++connection) {
+				if(connection->has_incoming_data()) ❸
+				{
+					data_packet data=connection->incoming();
+					std::promise<payload_type>& p=
+					connection->get_promise(data.id); ❹
+					p.set_value(data.payload);
+				}
+				if(connection->has_outgoing_data()) ❺
+				{
+					outgoing_packet data=
+					connection->top_of_outgoing_queue();
+					connection->send(data.payload);
+					data.promise.set_value(true); ❻
+				}
 			}
 		}
 	}

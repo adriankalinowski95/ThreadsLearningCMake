@@ -74,7 +74,7 @@ public:
 			third.join();
 		}
 
-		if (true) {
+		if (false) {
 			ZeroEvenOdd zeroEvenOdd{1};
 
 			std::thread t1([](ZeroEvenOdd& arg) {
@@ -125,7 +125,7 @@ private:
 	static constexpr bool Thread_Shared_Mutex_Read_Write = false;
 	static constexpr bool Thread_Condition_Veriable = false;
 	static constexpr bool Thread_Future_Async = false;
-	static constexpr bool Thread_Package_Task = false;
+	static constexpr bool Thread_Package_Task = true;
 	static constexpr bool Thread_Promise_Task = false;
 };
 
